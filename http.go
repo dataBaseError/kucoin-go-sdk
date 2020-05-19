@@ -228,6 +228,10 @@ type ApiResponse struct {
 	Message  string          `json:"msg"`
 }
 
+func (ar *ApiResponse) RawResponse() *http.Response {
+	return ar.response.Response
+}
+
 // HttpSuccessful judges the success of http.
 func (ar *ApiResponse) HttpSuccessful() bool {
 	return ar.response.StatusCode == http.StatusOK
